@@ -14,7 +14,7 @@ imap jj <esc>
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
 " Ack with leader f
-nmap <leader>f !ack 
+nmap <leader>f :Ack!
 
 map <Leader>m :CtrlPModified<CR>
 map <Leader>M :CtrlPBranch<CR>
