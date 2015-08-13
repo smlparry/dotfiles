@@ -29,7 +29,7 @@ nmap <C-l> <C-w>l
 set number
 
 " Remove search results
-:nnoremap <CR> :nohlsearch<cr>
+:nnoremap <leader>, :nohlsearch<cr>
 
 " Don't lookup the vendor directory
 set wildignore+=*/vendor/**
@@ -271,7 +271,6 @@ autocmd BufReadPost *
      \ endif
 " Remember info about open buffers on close
 set viminfo^=%
-
 
 """"""""""""""""""""""""""""""
 " => Status line
