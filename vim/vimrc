@@ -29,7 +29,12 @@ nmap <C-l> <C-w>l
 set number
 
 " Remove search results
-:nnoremap <CR> :nohlsearch<cr>
+:nnoremap <leader>, :nohlsearch<cr>
+
+" Select all
+nmap <leader>a 1GVG
+nmap <leader>A 1GVG=
+ 
 
 " Don't lookup the vendor directory
 set wildignore+=*/vendor/**
@@ -55,7 +60,6 @@ command W w !sudo tee % > /dev/null
 " Test Vim key mappings
 nmap <leader>T :TestNearest<CR>
 nmap <leader>t :TestFile<CR>
-nmap <leader>a :TestSuite<CR>
 nmap <leader>l :TestLast<CR>
 nmap <leader>g :TestVisit<CR>
 
