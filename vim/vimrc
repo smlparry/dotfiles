@@ -11,7 +11,7 @@ let g:mapleader = "\<Space>"
 imap jj <esc>
 
 " Auto change current directory to match current file
-nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Ack with leader f
 nmap <leader>f :Ack!
@@ -49,9 +49,11 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-
 " Fast saving
 nmap <leader>w :w!<cr>
+
+" Cause I suck at quitting
+command Q q
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -65,9 +67,6 @@ nmap <leader>g :TestVisit<CR>
 
 " Emmet key expand
 let g:user_emmet_leader_key = '<C-Z>'
-
-" Rubo Cop
-nmap <leader>r :RuboCop<CR>
 
 " Make a new line without going into insert mode
 nnoremap <leader>o o<Esc>k
@@ -219,12 +218,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <c-space> ?
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
