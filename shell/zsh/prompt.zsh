@@ -54,7 +54,7 @@ function prompt_pwd() {
   echo "$prompt_path"
 }
 
-local git_formats="%{${fg_bold[yellow]}%}± %b%c%u:%.7i%{${reset_color}%}"
+local git_formats="%{${fg_bold[yellow]}%} %b%c%u:%.7i%{${reset_color}%}"
 zstyle ':vcs_info:git*' enable git
 zstyle ':vcs_info:git*' check-for-changes true
 zstyle ':vcs_info:git*' get-revision true
