@@ -33,8 +33,9 @@ set number
 
 " Select all
 nmap <leader>a 1GVG
+
+" Align whole file
 nmap <leader>A 1GVG=
- 
 
 " Don't lookup the vendor directory
 set wildignore+=*/vendor/**

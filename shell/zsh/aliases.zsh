@@ -12,3 +12,5 @@ alias vss="vagrant ssh; cd /vagrant/${PWD##*/}"
 alias vh="vagrant halt"
 alias vp="vagrant provision"
 alias vd="vagrant destroy"
+
+alias gcm="git checkout master"
