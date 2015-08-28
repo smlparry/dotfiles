@@ -25,6 +25,7 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
+
 " Set numbers to be on by default
 set number
 
@@ -58,7 +59,7 @@ command Q q
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+command W w
 
 " Test Vim key mappings
 nmap <leader>T :TestNearest<CR>
@@ -108,11 +109,6 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
 " Ignore case when searching
 set ignorecase
 
@@ -153,7 +149,7 @@ set foldcolumn=1
 syntax enable
 
 try
-    colorscheme desert
+    colorscheme jellybeans
 catch
 endtry
 
