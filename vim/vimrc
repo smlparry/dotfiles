@@ -29,6 +29,7 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
+
 " Set numbers to be on by default
 set number
 
@@ -62,7 +63,7 @@ command Q q
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+command W w
 
 " Test Vim key mappings
 nmap <leader>T :TestNearest<CR>
@@ -81,6 +82,9 @@ nnoremap <leader>o o<Esc>k
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
+
+" Cursor line cause it looks cool
+set cursorline
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
