@@ -10,6 +10,10 @@ let g:mapleader = "\<Space>"
 " Escape with jj
 imap jj <esc>
 
+" Go to end of line with shift+(l/h)
+nmap <S-L> $
+nmap <S-H> 0
+
 " Auto change current directory to match current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
@@ -108,11 +112,6 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
 " Ignore case when searching
 set ignorecase
 
@@ -153,7 +152,7 @@ set foldcolumn=1
 syntax enable
 
 try
-    colorscheme desert
+    colorscheme jellybeans
 catch
 endtry
 
