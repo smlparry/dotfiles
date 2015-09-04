@@ -10,6 +10,10 @@ let g:mapleader = "\<Space>"
 " Escape with jj
 imap jj <esc>
 
+" Go to end of line with shift+(l/h)
+nmap <S-L> $
+nmap <S-H> 0
+
 " Auto change current directory to match current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
