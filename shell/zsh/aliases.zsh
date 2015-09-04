@@ -14,3 +14,6 @@ alias vp="vagrant provision"
 alias vd="vagrant destroy"
 
 alias gcm="git checkout master"
+
+alias ydv="youtube-dl"
+alias ydm="youtube-dl --extract-audio"
