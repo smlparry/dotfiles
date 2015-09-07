@@ -105,6 +105,7 @@ fresh-options --file=~/.vimrc --marker=\"
   fresh twe4ked/dotfiles vim/vundle_after.vim
   fresh vim/vimrc
 fresh-options
+fresh vim/colors --file=~/.vim/colors/
 
 fresh_after_build() {
   if which chflags &> /dev/null; then
