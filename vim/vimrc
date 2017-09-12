@@ -18,8 +18,14 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " Ack with leader f
 nmap <leader>f :Ack!
 
+" CtrlP settings
 map <Leader>m :CtrlPModified<CR>
 map <Leader>M :CtrlPBranch<CR>
+map <Leader>z :CtrlPModified<CR>
+map <Leader>Z :CtrlPBranch<CR>
+
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'ag %s -l --nocolor -g ""']
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 " Change between splits with
 nmap <C-h> <C-w>h
@@ -58,6 +64,8 @@ nmap <leader>w :w!<cr>
 " Cause I suck at quitting and saving
 command Q q
 command W w
+command Wq wq
+command GG wq
 
 " Test Vim key mappings
 nmap <leader>T :TestNearest<CR>
@@ -193,7 +201,6 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -330,6 +337,9 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
+" search with silver surfer
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -381,3 +391,28 @@ endfunction
 
 nnoremap ci( :call New_cib()<CR>
 nnoremap cib :call New_cib()<CR>
+
+" Ultisnips stuff
+" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:jsx_ext_required = 0
+
+function s:AutoMkdir(file, buf)
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
+    endif
+  endif
+endfunction
+
+autocmd BufWritePre * :call s:AutoMkdir(expand('<afile>'), +expand('<abuf>'))
+
+" Map Tab to autocomplete
+imap <Tab> <C-P>
+set complete=.,b,u,]
+set wildmode=longest,list:longest
+set completeopt=menu,preview
+
