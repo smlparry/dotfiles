@@ -37,7 +37,7 @@ nmap <C-l> <C-w>l
 set number
 
 " Remove search results
-:nnoremap <leader>, :nohlsearch<cr>
+nnoremap <leader>, :nohlsearch<cr>
 
 " Select all
 nmap <leader>a 1GVG
@@ -74,7 +74,7 @@ nmap <leader>l :TestLast<CR>
 nmap <leader>g :TestVisit<CR>
 
 " Emmet key expand
-let g:user_emmet_leader_key = '<C-Z>'
+let g:user_emmet_leader_key = '<S-Z>'
 
 " Make a new line without going into insert mode
 nnoremap <leader>o o<Esc>k
@@ -100,9 +100,9 @@ set wildmenu
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
-    set wildignore+=.git\*,.hg\*,.svn\*
+  set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
 "Always show current position
@@ -162,10 +162,10 @@ colorscheme jellybeans_custom
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+  set guioptions-=T
+  set guioptions-=e
+  set t_Co=256
+  set guitablabel=%M\ %t
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -191,7 +191,7 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
+" 1 tab == 2 spaces
 set shiftwidth=2
 set tabstop=2
 
@@ -216,15 +216,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" Close the current buffer
-map <leader>bd :Bclose<cr>
 
 " Last file
 map <leader><Space> <C-^>
@@ -263,9 +254,9 @@ endtry
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -284,19 +275,6 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
 map 0 ^
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
@@ -350,30 +328,30 @@ map <leader>pp :setlocal paste!<cr>
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+  exe "menu Foo.Bar :" . a:str
+  emenu Foo.Bar
+  unmenu Foo
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+  let l:saved_reg = @"
+  execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("Ack \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
+  if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+  elseif a:direction == 'gv'
+    call CmdLine("Ack \"" . l:pattern . "\" " )
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+  endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+  let @/ = l:pattern
+  let @" = l:saved_reg
 endfunction
 
 " Be able to select brackets with ci(
@@ -392,13 +370,9 @@ endfunction
 nnoremap ci( :call New_cib()<CR>
 nnoremap cib :call New_cib()<CR>
 
-" Ultisnips stuff
-" let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 let g:jsx_ext_required = 0
 
+" Automatically create the required folders to save file
 function s:AutoMkdir(file, buf)
   if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
     let dir=fnamemodify(a:file, ':h')
@@ -410,9 +384,42 @@ endfunction
 
 autocmd BufWritePre * :call s:AutoMkdir(expand('<afile>'), +expand('<abuf>'))
 
-" Map Tab to autocomplete
-imap <Tab> <C-P>
-set complete=.,b,u,]
-set wildmode=longest,list:longest
-set completeopt=menu,preview
+" Autocomplete with tab
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
 
+" Allow words with `-` to be autocompleted
+set iskeyword+=\-
+
+" Syntastic Recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Paste in non-GUI Vim with correct indentation when using Lion's Terminal or iTerm 1.0.0.20110908b+
+" <http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x/7053522#7053522>
+if &term =~ "xterm.*"
+  let &t_ti = &t_ti . "\e[?2004h"
+  let &t_te = "\e[?2004l" . &t_te
+  function XTermPasteBegin(ret)
+    set pastetoggle=<Esc>[201~
+    set paste
+    return a:ret
+  endfunction
+  map <expr> <Esc>[200~ XTermPasteBegin("i")
+  imap <expr> <Esc>[200~ XTermPasteBegin("")
+endif
