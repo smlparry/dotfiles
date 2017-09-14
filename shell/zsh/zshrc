@@ -38,3 +38,6 @@ source /opt/boxen/env.sh
 
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PGHOST=localhost
+
+# Init rbenv
+eval "$(rbenv init -)"
