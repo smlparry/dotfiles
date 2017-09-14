@@ -74,7 +74,7 @@ nmap <leader>l :TestLast<CR>
 nmap <leader>g :TestVisit<CR>
 
 " Emmet key expand
-let g:user_emmet_leader_key = '<S-Z>'
+let g:user_emmet_leader_key = '<C-Z>'
 
 " Make a new line without going into insert mode
 nnoremap <leader>o o<Esc>k
