@@ -98,9 +98,7 @@ ln -sf ~/bin/_git-pre-commit-hook ~/.git_template/hooks/pre-commit
 # Vim
 fresh-options --file=~/.vimrc --marker=\"
   fresh vim/leader.vim
-  fresh twe4ked/dotfiles vim/vundle_before.vim
   fresh vim/vundle.vim
-  fresh twe4ked/dotfiles vim/vundle_after.vim
   fresh vim/vimrc
 fresh-options
 fresh vim/colors --file=~/.vim/colors/
