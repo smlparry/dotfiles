@@ -80,9 +80,6 @@ fresh-options --bin
   fresh twe4ked/twitter-whois bin/twitter-whois
   fresh jasoncodes/dotfiles bin/\*
   fresh jasoncodes/dotfiles bin/wemux/\*
-  fresh pengwynn/dotfiles bin/gxpr
-  fresh pengwynn/dotfiles bin/git-go
-  fresh pengwynn/dotfiles bin/+x
   fresh defunkt/repl bin/repl
   fresh hackling/morse bin/morse
   fresh garybernhardt/selecta selecta
