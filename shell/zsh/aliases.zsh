@@ -9,26 +9,14 @@ alias showFiles="defaults write com.apple.finder AppleShowAllFiles YES; killall 
 alias hideFiles="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
 alias sshkey="cat ~/.ssh/id_rsa.pub | pbcopy"
 
-alias vu="vagrant up"
-alias vs="vagrant ssh"
-alias vss="vagrant ssh; cd /vagrant/${PWD##*/}"
-alias vh="vagrant halt"
-alias vp="vagrant provision"
-alias vd="vagrant destroy"
-
-alias ydv="youtube-dl"
-alias ydm="youtube-dl --extract-audio"
-
 alias be="bundle exec"
 
-alias rr="rake install; reload"
 alias tr="trash"
 
-alias zc="zeus cucumber"
-
 alias vi="vim"
-alias sshdf="ssh deployer@daily-fire.com"
 
-alias browserstack="~/Downloads/BrowserStackLocal 8TxHCiHuTpfU9dN2Wn41"
+alias gup='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d && git fetch --prune && git rebase --autostash FETCH_HEAD'
 
-alias ngrok="~/Downloads/ngrok"
+# Daily Fire Alias'
+alias sshdfc="ssh deployer@core.daily-fire.com"
+alias sshdfdb="ssh db_user@128.199.130.48"
