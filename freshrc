@@ -98,10 +98,11 @@ ln -sf ~/bin/_git-pre-commit-hook ~/.git_template/hooks/pre-commit
 # Vim
 fresh-options --file=~/.vimrc --marker=\"
   fresh vim/leader.vim
-  fresh vim/vundle.vim
+  fresh vim/plug.vim
   fresh vim/vimrc
 fresh-options
 fresh vim/colors --file=~/.vim/colors/
+fresh junegunn/vim-plug plug.vim --file=~/.vim/autoload/plug.vim
 
 fresh_after_build() {
   if which chflags &> /dev/null; then
@@ -112,4 +113,4 @@ fresh_after_build() {
     ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
   fi
 }
-fresh jasoncodes/dotfiles vim/config/tags.vim --file=~/.vimrc
+fresh jasoncodes/dotfiles vim/config/tags.vim --file=~/.vimrc --filter=filter_vundle_lines
