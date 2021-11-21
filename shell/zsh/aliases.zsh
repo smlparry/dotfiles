@@ -1,14 +1,19 @@
+# Git
 alias gaa='git add .; git status'
 alias gcm="git checkout master"
+alias gco="git checkout"
 alias gr="git reset"
+alias gp="git push"
+alias gs="git status"
+alias gup='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d && git fetch --prune && git rebase --autostash FETCH_HEAD'
+alias gap="git add --patch"
+alias gc="git commit -v"
 
-alias sshkey="cat ~/.ssh/id_rsa.pub | pbcopy"
-
+# Ruby
 alias be="bundle exec"
 
+# Vim
 alias vi="vim"
-
-alias gup='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d && git fetch --prune && git rebase --autostash FETCH_HEAD'
 
 # Docker Alias
 alias dc="docker-compose"
