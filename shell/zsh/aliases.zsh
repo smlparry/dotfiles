@@ -31,3 +31,6 @@ alias dfrs='dfss && fs sidekiq'
 alias dcr="docker-compose run --rm"
 alias dcrr="docker-compose run --rm rails bundle exec"
 alias fitzeus="docker-compose -f docker-compose.test.yml run --rm --name fit-pwa-zeus zeus sh -c \"unset RAILS_ENV; bundle exec rails db:test:prepare; zeus start\""
+
+# Misc
+alias dotfiles="vi ~/.dotfiles/shell/zsh/"
